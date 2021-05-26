@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomAuditingDemo", "CustomAuditingDemo\CustomAuditingDemo.csproj", "{79922150-BD8A-45DE-A684-DC4E48447700}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFPlusAuditingDemo", "EFPlusAuditingDemo\EFPlusAuditingDemo.csproj", "{DFE13E3D-6D33-4E10-A4BF-6CEC7F4FE419}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{79922150-BD8A-45DE-A684-DC4E48447700}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79922150-BD8A-45DE-A684-DC4E48447700}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79922150-BD8A-45DE-A684-DC4E48447700}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFE13E3D-6D33-4E10-A4BF-6CEC7F4FE419}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFE13E3D-6D33-4E10-A4BF-6CEC7F4FE419}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFE13E3D-6D33-4E10-A4BF-6CEC7F4FE419}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFE13E3D-6D33-4E10-A4BF-6CEC7F4FE419}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
