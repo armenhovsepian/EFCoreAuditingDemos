@@ -24,12 +24,30 @@ namespace EFPlusAuditingDemo.Data
             optionsBuilder.UseNpgsql("Host=127.0.0.1;Database=EFPlusAuditingDemoDB;Username=postgres;Password=Zevit2019!");
         }
 
+        //public int Commit()
+        //{
+        //    var audit = new Audit();
+        //    audit.CreatedBy = "rmn.hovsepian@live.com";
+        //    return this.SaveChanges(audit);
+        //}
 
-        public int Commit()
+
+
+        public override int SaveChanges()
         {
             var audit = new Audit();
             audit.CreatedBy = "rmn.hovsepian@live.com";
-            return this.SaveChanges(audit);
+            audit.PreSaveChanges(this);
+            var rowAffecteds = base.SaveChanges();
+            audit.PostSaveChanges();
+
+            if (audit.Configuration.AutoSavePreAction != null)
+            {
+                audit.Configuration.AutoSavePreAction(this, audit);
+                base.SaveChanges();
+            }
+
+            return rowAffecteds;
         }
 
     }

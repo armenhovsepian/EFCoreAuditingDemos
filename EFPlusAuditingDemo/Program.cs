@@ -33,7 +33,7 @@ namespace EFPlusAuditingDemo
                 p.Name = "XXX";
 
                 ctx.Products.Update(p);
-                ctx.Commit();
+                ctx.SaveChanges();
             }
         }
     }
