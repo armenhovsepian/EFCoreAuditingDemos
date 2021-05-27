@@ -1,4 +1,6 @@
 ﻿using EFPlusAuditingDemo.Data;
+using EFPlusAuditingDemo.Models;
+using System;
 
 namespace EFPlusAuditingDemo
 {
@@ -21,18 +23,17 @@ namespace EFPlusAuditingDemo
 
             using (var ctx = new AppDbContext())
             {
-                //var p = new Product
-                //{
-                //    Id = new Random().Next(0, Int32.MaxValue),
-                //    Name = "P2",
-                //    Description = "D2"
-                //};
-                //ctx.Products.Add(p);
+                var p = new Product
+                {
+                    Id = new Random().Next(0, Int32.MaxValue),
+                    Name = "P2",
+                    Description = "D2"
+                };
+                ctx.Products.Add(p);
 
-                var p = ctx.Products.Find(10);
-                p.Name = "XXX";
-
-                ctx.Products.Update(p);
+                //var p = ctx.Products.Find(10);
+                //p.Name = "XXX";
+                //ctx.Products.Update(p);
                 ctx.SaveChanges();
             }
         }

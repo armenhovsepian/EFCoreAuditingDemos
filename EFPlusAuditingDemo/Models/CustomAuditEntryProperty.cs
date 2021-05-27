@@ -2,7 +2,7 @@
 
 namespace EFPlusAuditingDemo.Models
 {
-    class CustomAuditEntryProperty : AuditEntryProperty
+    public class CustomAuditEntryProperty : AuditEntryProperty
     {
         public string CustomField { get; set; }
     }

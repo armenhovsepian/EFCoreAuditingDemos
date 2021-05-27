@@ -9,7 +9,7 @@ namespace EFPlusAuditingDemo.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "AuditEntries",
+                name: "AuditEntry",
                 columns: table => new
                 {
                     AuditEntryID = table.Column<int>(type: "integer", nullable: false)
@@ -19,11 +19,13 @@ namespace EFPlusAuditingDemo.Migrations
                     EntitySetName = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
                     EntityTypeName = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
                     State = table.Column<int>(type: "integer", nullable: false),
-                    StateName = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true)
+                    StateName = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
+                    Discriminator = table.Column<string>(type: "text", nullable: false),
+                    IpAdress = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AuditEntries", x => x.AuditEntryID);
+                    table.PrimaryKey("PK_AuditEntry", x => x.AuditEntryID);
                 });
 
             migrationBuilder.CreateTable(
@@ -41,7 +43,7 @@ namespace EFPlusAuditingDemo.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AuditEntryProperties",
+                name: "AuditEntryProperty",
                 columns: table => new
                 {
                     AuditEntryPropertyID = table.Column<int>(type: "integer", nullable: false)
@@ -50,35 +52,37 @@ namespace EFPlusAuditingDemo.Migrations
                     PropertyName = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
                     RelationName = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
                     NewValue = table.Column<string>(type: "text", nullable: true),
-                    OldValue = table.Column<string>(type: "text", nullable: true)
+                    OldValue = table.Column<string>(type: "text", nullable: true),
+                    Discriminator = table.Column<string>(type: "text", nullable: false),
+                    CustomField = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AuditEntryProperties", x => x.AuditEntryPropertyID);
+                    table.PrimaryKey("PK_AuditEntryProperty", x => x.AuditEntryPropertyID);
                     table.ForeignKey(
-                        name: "FK_AuditEntryProperties_AuditEntries_AuditEntryID",
+                        name: "FK_AuditEntryProperty_AuditEntry_AuditEntryID",
                         column: x => x.AuditEntryID,
-                        principalTable: "AuditEntries",
+                        principalTable: "AuditEntry",
                         principalColumn: "AuditEntryID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AuditEntryProperties_AuditEntryID",
-                table: "AuditEntryProperties",
+                name: "IX_AuditEntryProperty_AuditEntryID",
+                table: "AuditEntryProperty",
                 column: "AuditEntryID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AuditEntryProperties");
+                name: "AuditEntryProperty");
 
             migrationBuilder.DropTable(
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "AuditEntries");
+                name: "AuditEntry");
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace EFPlusAuditingDemo.Models
 {
-    class CustomAuditEntry : AuditEntry
+    public class CustomAuditEntry : AuditEntry
     {
         public string IpAdress { get; set; }
     }
