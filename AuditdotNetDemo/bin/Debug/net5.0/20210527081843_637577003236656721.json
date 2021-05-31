@@ -1,0 +1,35 @@
+{
+  "EventType": "AppDbContext",
+  "Environment": {
+    "UserName": "ArmenHovsepian",
+    "MachineName": "DESKTOP-5EVOHDN",
+    "DomainName": "AzureAD",
+    "CallingMethodName": "Microsoft.EntityFrameworkCore.DbContext.SaveChanges()",
+    "AssemblyName": "Microsoft.EntityFrameworkCore, Version=5.0.6.0, Culture=neutral, PublicKeyToken=adb9793829ddae60",
+    "Culture": "en-US"
+  },
+  "StartDate": "2021-05-27T08:18:43.2714231Z",
+  "EndDate": "2021-05-27T08:18:43.6591025Z",
+  "Duration": 388,
+  "EntityFrameworkEvent": {
+    "Database": "AuditdotNetDemoDB",
+    "Entries": [
+      {
+        "Table": "Products",
+        "Name": "Product",
+        "Action": "Insert",
+        "PrimaryKey": {
+          "Id": 253577794
+        },
+        "ColumnValues": {
+          "Id": 253577794,
+          "Description": "D2",
+          "Name": "P2"
+        },
+        "Valid": true
+      }
+    ],
+    "Result": 1,
+    "Success": true
+  }
+}

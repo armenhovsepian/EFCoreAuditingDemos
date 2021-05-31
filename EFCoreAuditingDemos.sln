@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomAuditingDemo", "CustomAuditingDemo\CustomAuditingDemo.csproj", "{79922150-BD8A-45DE-A684-DC4E48447700}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomAuditingDemo", "CustomAuditingDemo\CustomAuditingDemo.csproj", "{79922150-BD8A-45DE-A684-DC4E48447700}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFPlusAuditingDemo", "EFPlusAuditingDemo\EFPlusAuditingDemo.csproj", "{DFE13E3D-6D33-4E10-A4BF-6CEC7F4FE419}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFPlusAuditingDemo", "EFPlusAuditingDemo\EFPlusAuditingDemo.csproj", "{DFE13E3D-6D33-4E10-A4BF-6CEC7F4FE419}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuditdotNetDemo", "AuditdotNetDemo\AuditdotNetDemo.csproj", "{0DAD822B-E0E8-459F-A86C-FAC5D0065F4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DFE13E3D-6D33-4E10-A4BF-6CEC7F4FE419}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFE13E3D-6D33-4E10-A4BF-6CEC7F4FE419}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFE13E3D-6D33-4E10-A4BF-6CEC7F4FE419}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DAD822B-E0E8-459F-A86C-FAC5D0065F4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DAD822B-E0E8-459F-A86C-FAC5D0065F4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DAD822B-E0E8-459F-A86C-FAC5D0065F4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DAD822B-E0E8-459F-A86C-FAC5D0065F4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

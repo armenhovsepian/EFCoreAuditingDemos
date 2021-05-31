@@ -10,6 +10,9 @@ namespace CustomAuditingDemo.Models
         public string OldValue { get; set; }
         public string NewValue { get; set; }
         public string Auditor { get; set; }
+        /// <summary>
+        /// AuditAction: Inset/Update/Delete
+        /// </summary>
         public string ChangeType { get; set; }
         public DateTime Date { get; set; }
     }

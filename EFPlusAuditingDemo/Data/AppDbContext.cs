@@ -12,9 +12,10 @@ namespace EFPlusAuditingDemo.Data
         public DbSet<CustomAuditEntryProperty> AuditEntryProperties { get; set; }
 
 
-        public AppDbContext()
+        static AppDbContext()
         {
             // Global options
+            // https://entityframework-plus.net/ef6-audit-autosave
             AuditManager.DefaultConfiguration.AutoSavePreAction = (context, audit) =>
                // ADD "Where(x => x.AuditEntryID == 0)" to allow multiple SaveChanges with same Audit
                (context as AppDbContext).AuditEntries.AddRange(audit.Entries.Cast<CustomAuditEntry>());
@@ -50,11 +51,11 @@ namespace EFPlusAuditingDemo.Data
             var rowAffecteds = base.SaveChanges();
             audit.PostSaveChanges();
 
-            if (audit.Configuration.AutoSavePreAction != null)
-            {
-                audit.Configuration.AutoSavePreAction(this, audit);
-                base.SaveChanges();
-            }
+            //if (audit.Configuration.AutoSavePreAction != null)
+            //{
+            //    audit.Configuration.AutoSavePreAction(this, audit);
+            //    base.SaveChanges();
+            //}
 
             return rowAffecteds;
         }
