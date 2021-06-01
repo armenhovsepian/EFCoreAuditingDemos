@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CustomAuditingDemo.Data
 {
-    public class CustomAuditDbContext : DbContext
+    public class AuditingDbContext : DbContext
     {
         public DbSet<AuditTrail> AuditTrails { get; set; }
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
@@ -24,7 +24,7 @@ namespace CustomAuditingDemo.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=127.0.0.1;Database=EFAuditTrailDB;Username=postgres;Password=Abc1234");
+            optionsBuilder.UseNpgsql("Host=127.0.0.1;Database=CustomAuditingDemoDB;Username=postgres;Password=Abc1234");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
