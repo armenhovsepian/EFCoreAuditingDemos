@@ -36,8 +36,15 @@ namespace CustomAuditingDemo.Data
         {
             foreach (var property in entry.Properties.Where(property => !Attribute.IsDefined(property.Metadata.PropertyInfo, typeof(AuditIgnore))))
             {
+                //var pk = string.Empty;
+                //if (property.Metadata.IsPrimaryKey())
+                //    pk = property.CurrentValue.ToString();
+
+                var d = property.Metadata.IsKey();
+
                 var auditEntry = new AuditTrail
                 {
+                    //PrimaryKey = pk,
                     Table = entry.Entity.GetType().Name, // e.Metadata.Relational().TableName, 
                     Column = property.Metadata.Name,
                     OldValue = property.OriginalValue.ToString(),

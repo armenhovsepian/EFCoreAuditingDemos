@@ -20,7 +20,7 @@ namespace AuditdotNetDemo.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=127.0.0.1;Database=AuditdotNetDemoDB;Username=postgres;Password=Zevit2019!");
+            optionsBuilder.UseNpgsql("Host=127.0.0.1;Database=AuditdotNetDemoDB;Username=postgres;Password=Abc1234");
         }
 
         //public override int SaveChanges()

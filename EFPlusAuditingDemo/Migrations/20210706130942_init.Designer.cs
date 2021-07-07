@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EFPlusAuditingDemo.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210526132911_init")]
+    [Migration("20210706130942_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,10 +53,6 @@ namespace EFPlusAuditingDemo.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("EntitySetName")
                         .HasMaxLength(255)
                         .HasColumnType("character varying(255)");
@@ -74,9 +70,7 @@ namespace EFPlusAuditingDemo.Migrations
 
                     b.HasKey("AuditEntryID");
 
-                    b.ToTable("AuditEntry");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("AuditEntry");
+                    b.ToTable("AuditEntries");
                 });
 
             modelBuilder.Entity("Z.EntityFramework.Plus.AuditEntryProperty", b =>
@@ -88,10 +82,6 @@ namespace EFPlusAuditingDemo.Migrations
 
                     b.Property<int>("AuditEntryID")
                         .HasColumnType("integer");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<string>("NewValueFormatted")
                         .HasColumnType("text")
@@ -113,29 +103,7 @@ namespace EFPlusAuditingDemo.Migrations
 
                     b.HasIndex("AuditEntryID");
 
-                    b.ToTable("AuditEntryProperty");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("AuditEntryProperty");
-                });
-
-            modelBuilder.Entity("EFPlusAuditingDemo.Models.CustomAuditEntry", b =>
-                {
-                    b.HasBaseType("Z.EntityFramework.Plus.AuditEntry");
-
-                    b.Property<string>("IpAdress")
-                        .HasColumnType("text");
-
-                    b.HasDiscriminator().HasValue("CustomAuditEntry");
-                });
-
-            modelBuilder.Entity("EFPlusAuditingDemo.Models.CustomAuditEntryProperty", b =>
-                {
-                    b.HasBaseType("Z.EntityFramework.Plus.AuditEntryProperty");
-
-                    b.Property<string>("CustomField")
-                        .HasColumnType("text");
-
-                    b.HasDiscriminator().HasValue("CustomAuditEntryProperty");
+                    b.ToTable("AuditEntryProperties");
                 });
 
             modelBuilder.Entity("Z.EntityFramework.Plus.AuditEntryProperty", b =>

@@ -18,7 +18,7 @@ namespace AuditdotNetDemo
             // 
             Audit.Core.Configuration.DataProvider = new PostgreSqlDataProvider()
             {
-                ConnectionString = "Host=127.0.0.1;Database=AuditdotNetDemoDB;Username=postgres;Password=Zevit2019!",
+                ConnectionString = "Host=127.0.0.1;Database=AuditdotNetDemoDB;Username=postgres;Password=Abc1234",
                 TableName = "event",
                 IdColumnName = "id",
                 DataColumnName = "data",
