@@ -1,4 +1,5 @@
-﻿using EFCoreAuditingDemo.Data;
+﻿using Common.Models;
+using EFCoreAuditingDemo.Data;
 using EFCoreAuditingDemo.Models;
 using System;
 using System.Linq;

@@ -17,4 +17,5 @@ namespace CustomAuditingDemo.Models
         public string ChangeType { get; set; }
         public DateTime Date { get; set; }
     }
+
 }

@@ -1,4 +1,5 @@
-﻿using CustomAuditingDemo.Attributes;
+﻿using Common.Models;
+using CustomAuditingDemo.Attributes;
 using CustomAuditingDemo.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;

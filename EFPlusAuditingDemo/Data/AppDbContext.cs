@@ -1,4 +1,4 @@
-﻿using EFPlusAuditingDemo.Models;
+﻿using Common.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;

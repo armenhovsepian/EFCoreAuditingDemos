@@ -1,4 +1,4 @@
-﻿using CustomAuditingDemo.Models;
+﻿using Common.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace CustomAuditingDemo.Data

@@ -1,5 +1,5 @@
 ﻿using Audit.EntityFramework;
-using AuditdotNetDemo.Models;
+using Common.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace AuditdotNetDemo.Data

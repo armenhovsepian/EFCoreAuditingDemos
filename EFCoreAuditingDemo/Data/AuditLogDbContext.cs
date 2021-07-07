@@ -1,4 +1,5 @@
-﻿using EFCoreAuditingDemo.Models;
+﻿using Common.Models;
+using EFCoreAuditingDemo.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;

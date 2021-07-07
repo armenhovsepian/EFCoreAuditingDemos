@@ -1,4 +1,5 @@
-﻿using EFPlusAuditingDemo.Data;
+﻿using Common.Models;
+using EFPlusAuditingDemo.Data;
 using EFPlusAuditingDemo.Models;
 using System;
 using System.Linq;
