@@ -15,9 +15,9 @@ namespace EFCoreAuditingDemo.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     EntityName = table.Column<string>(type: "text", nullable: true),
                     AuditType = table.Column<int>(type: "integer", nullable: false),
-                    KeyValues = table.Column<string>(type: "text", nullable: true),
-                    OldValues = table.Column<string>(type: "text", nullable: true),
-                    NewValues = table.Column<string>(type: "text", nullable: true),
+                    KeyValues = table.Column<string>(type: "jsonb", nullable: true),
+                    OldValues = table.Column<string>(type: "jsonb", nullable: true),
+                    NewValues = table.Column<string>(type: "jsonb", nullable: true),
                     ModifiedBy = table.Column<string>(type: "text", nullable: true),
                     DateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },

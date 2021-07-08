@@ -15,8 +15,14 @@ namespace EFCoreAuditingDemo
     {
         static async Task Main(string[] args)
         {
-            await CreateAsync();
+
+            for (int i = 0; i < 5; i++)
+                await CreateAsync();
+
             await UpdateAsync();
+
+            await GetAuditByProductIdAsync(2);
+
             await RemoveAsync();
 
             await GetAuditsAsync();
@@ -76,9 +82,26 @@ namespace EFCoreAuditingDemo
                 .Where(x => x.AuditType == Models.AuditType.Deleted)
                 .ToListAsync();
 
-
-
             var d = audits.Select(x => new AuditDto(x)).ToList();
+        }
+
+
+        static async Task GetAuditByProductIdAsync(int productId)
+        {
+            Console.WriteLine("Get Audit by Id!");
+
+            using var ctx = new AuditLogDbContext();
+
+            var query = @"
+
+                    SELECT *
+                        FROM public.""Audits""
+                            WHERE ""KeyValues"" -> 'Id' = '2'
+
+            ";
+
+            var audits = await ctx.Audits.FromSqlRaw(query).ToListAsync();
+
         }
     }
 }

@@ -27,6 +27,8 @@ namespace EFCoreAuditingDemo.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //modelBuilder.ApplyConfigurationsFromAssembly(typeof(AuditLogDbContext).Assembly);
+            //modelBuilder.HasPostgresExtension("uuid-ossp");
             base.OnModelCreating(modelBuilder);
         }
 

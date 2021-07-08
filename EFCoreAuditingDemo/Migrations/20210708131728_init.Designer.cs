@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EFCoreAuditingDemo.Migrations
 {
     [DbContext(typeof(AuditLogDbContext))]
-    [Migration("20210708105152_init")]
+    [Migration("20210708131728_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -55,16 +55,16 @@ namespace EFCoreAuditingDemo.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("KeyValues")
-                        .HasColumnType("text");
+                        .HasColumnType("jsonb");
 
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("text");
 
                     b.Property<string>("NewValues")
-                        .HasColumnType("text");
+                        .HasColumnType("jsonb");
 
                     b.Property<string>("OldValues")
-                        .HasColumnType("text");
+                        .HasColumnType("jsonb");
 
                     b.HasKey("Id");
 

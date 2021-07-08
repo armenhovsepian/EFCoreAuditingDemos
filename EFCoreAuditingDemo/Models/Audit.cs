@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EFCoreAuditingDemo.Models
 {
@@ -8,8 +9,14 @@ namespace EFCoreAuditingDemo.Models
         public string EntityName { get; set; }
         public AuditType AuditType { get; set; }
         //public string StateName { get; set; }
+
+        [Column(TypeName = "jsonb")]
         public string KeyValues { get; set; }
+
+        [Column(TypeName = "jsonb")]
         public string OldValues { get; set; }
+
+        [Column(TypeName = "jsonb")]
         public string NewValues { get; set; }
 
         public string ModifiedBy { get; set; }
