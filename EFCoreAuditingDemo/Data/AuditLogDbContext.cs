@@ -1,4 +1,5 @@
-﻿using Common.Models;
+﻿using Common.Attributes;
+using Common.Models;
 using EFCoreAuditingDemo.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -21,7 +22,7 @@ namespace EFCoreAuditingDemo.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=127.0.0.1;Database=EFCoreAuditingDemoDB;Username=postgres;Password=Abc1234");
+            optionsBuilder.UseNpgsql("Host=127.0.0.1;Database=EFCoreAuditingDemoDB;Username=postgres;Password=Zevit2019!");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -48,7 +49,7 @@ namespace EFCoreAuditingDemo.Data
 
             var auditEntries = new List<AuditEntry>();
 
-            foreach (EntityEntry entry in ChangeTracker.Entries().ToList())
+            foreach (EntityEntry entry in ChangeTracker.Entries<IAuditable>().ToList())
             {
                 if (entry.Entity is Audit || entry.State == EntityState.Detached ||
                     entry.State == EntityState.Unchanged)
@@ -56,14 +57,13 @@ namespace EFCoreAuditingDemo.Data
 
                 var auditEntry = new AuditEntry(entry)
                 {
-                    TableName = entry.Entity.GetType().Name, //entry.Metadata.Relational().TableName,
-                    StateName = entry.State.ToString(),
                     ModifiedBy = CurrentUserId
                 };
 
                 auditEntries.Add(auditEntry);
 
-                foreach (var property in entry.Properties)
+                foreach (var property in entry.Properties.Where(property =>
+                                                    !Attribute.IsDefined(property.Metadata.PropertyInfo, typeof(AuditIgnore))))
                 {
                     if (property.IsTemporary)
                     {
@@ -93,12 +93,11 @@ namespace EFCoreAuditingDemo.Data
                             }
                             break;
 
-                        case EntityState.Detached:
-                        case EntityState.Unchanged:
                         case EntityState.Deleted:
-                            auditEntry.NewValues[propertyName] = null;
                             auditEntry.OldValues[propertyName] = property.OriginalValue;
                             break;
+                        case EntityState.Detached:
+                        case EntityState.Unchanged:
                         default:
                             break;
                     }

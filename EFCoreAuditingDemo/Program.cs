@@ -1,12 +1,16 @@
 ﻿using Common.Models;
 using EFCoreAuditingDemo.Data;
-using EFCoreAuditingDemo.Models;
+using EFCoreAuditingDemo.Dtos;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace EFCoreAuditingDemo
 {
+    /// <summary>
+    /// https://github.com/OKTAYKIR/EFCoreAuditing/
+    /// </summary>
     class Program
     {
         static async Task Main(string[] args)
@@ -14,6 +18,9 @@ namespace EFCoreAuditingDemo
             await CreateAsync();
             await UpdateAsync();
             await RemoveAsync();
+
+            await GetAuditsAsync();
+
         }
 
 
@@ -25,7 +32,6 @@ namespace EFCoreAuditingDemo
             using var ctx = new AuditLogDbContext();
             var p = new Product
             {
-                //Id = 10,
                 Name = "P1",
                 Description = "D1"
             };
@@ -58,6 +64,21 @@ namespace EFCoreAuditingDemo
 
             ctx.Products.Remove(p);
             await ctx.SaveChangesAsync();
+        }
+
+
+        static async Task GetAuditsAsync()
+        {
+            Console.WriteLine("Get Audits!");
+
+            using var ctx = new AuditLogDbContext();
+            var audits = await ctx.Audits
+                .Where(x => x.AuditType == Models.AuditType.Deleted)
+                .ToListAsync();
+
+
+
+            var d = audits.Select(x => new AuditDto(x)).ToList();
         }
     }
 }

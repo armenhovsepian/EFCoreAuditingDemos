@@ -15,7 +15,7 @@ namespace EFCoreAuditingDemo.Models
 
         public EntityEntry Entry { get; }
         public string ModifiedBy { get; set; }
-        public string TableName { get; set; }
+        public string EntityName { get; set; }
         public string StateName { get; set; }
         public Dictionary<string, object> KeyValues { get; } = new Dictionary<string, object>();
         public Dictionary<string, object> OldValues { get; } = new Dictionary<string, object>();
@@ -29,8 +29,9 @@ namespace EFCoreAuditingDemo.Models
             var audit = new Audit
             {
                 ModifiedBy = ModifiedBy,
-                TableName = TableName,
-                StateName = StateName,
+                EntityName = Entry.Entity.GetType().Name,
+                AuditType = (AuditType)Entry.State,
+                //StateName = Entry.State.ToString(),
                 DateTime = DateTime.UtcNow,
                 KeyValues = JsonConvert.SerializeObject(KeyValues),
                 OldValues = OldValues.Count == 0 ? null : JsonConvert.SerializeObject(OldValues),

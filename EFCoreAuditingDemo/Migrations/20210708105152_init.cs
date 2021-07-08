@@ -13,8 +13,8 @@ namespace EFCoreAuditingDemo.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    TableName = table.Column<string>(type: "text", nullable: true),
-                    StateName = table.Column<string>(type: "text", nullable: true),
+                    EntityName = table.Column<string>(type: "text", nullable: true),
+                    AuditType = table.Column<int>(type: "integer", nullable: false),
                     KeyValues = table.Column<string>(type: "text", nullable: true),
                     OldValues = table.Column<string>(type: "text", nullable: true),
                     NewValues = table.Column<string>(type: "text", nullable: true),
