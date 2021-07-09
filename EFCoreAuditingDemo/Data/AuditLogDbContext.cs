@@ -59,6 +59,8 @@ namespace EFCoreAuditingDemo.Data
 
                 var auditEntry = new AuditEntry(entry)
                 {
+                    AuditType = ConvertTo(entry.State),
+                    StateName = entry.State.ToString(),
                     ModifiedBy = CurrentUserId
                 };
 
@@ -143,6 +145,33 @@ namespace EFCoreAuditingDemo.Data
             }
 
             return base.SaveChangesAsync();
+        }
+
+        static AuditType ConvertTo(EntityState theirGender)
+        {
+            AuditType auditType;
+            switch (theirGender)
+            {
+                case EntityState.Added:
+                    auditType = AuditType.Added;
+                    break;
+                case EntityState.Modified:
+                    auditType = AuditType.Modified;
+                    break;
+                case EntityState.Deleted:
+                    auditType = AuditType.Deleted;
+                    break;
+                case EntityState.Unchanged:
+                    auditType = AuditType.Unchanged;
+                    break;
+                case EntityState.Detached:
+                    auditType = AuditType.Detached;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            return auditType;
         }
 
     }

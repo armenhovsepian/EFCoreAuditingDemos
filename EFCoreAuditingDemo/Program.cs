@@ -3,6 +3,7 @@ using EFCoreAuditingDemo.Data;
 using EFCoreAuditingDemo.Dtos;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -86,7 +87,7 @@ namespace EFCoreAuditingDemo
         }
 
 
-        static async Task GetAuditByProductIdAsync(int productId)
+        static async Task GetAuditByProductIdAsync(int id)
         {
             Console.WriteLine("Get Audit by Id!");
 
