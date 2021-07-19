@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CustomAuditingDemo.Data
 {
-    public class AuditingDbContext : DbContext
+    public abstract class AuditingDbContext : DbContext
     {
         public DbSet<AuditTrail> AuditTrails { get; set; }
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
