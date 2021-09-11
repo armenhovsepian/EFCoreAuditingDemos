@@ -16,6 +16,8 @@ namespace EFCoreAuditingDemo.Data
         private readonly string CurrentUserId = Guid.NewGuid().ToString();
 
         public DbSet<Audit> Audits { get; set; }
+        public DbSet<Product> Products { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
