@@ -11,14 +11,11 @@ using System.Threading.Tasks;
 
 namespace EFCoreAuditingDemo.Data
 {
-    public class AuditLogDbContext : DbContext
+    public abstract class AuditLogDbContext : DbContext
     {
         private readonly string CurrentUserId = Guid.NewGuid().ToString();
 
-
-        public DbSet<Product> Products { get; set; }
         public DbSet<Audit> Audits { get; set; }
-
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -32,6 +29,16 @@ namespace EFCoreAuditingDemo.Data
             base.OnModelCreating(modelBuilder);
         }
 
+        public override int SaveChanges()
+        {
+            var auditEntries = OnBeforeSaveChanges();
+
+            var result = base.SaveChanges();
+
+            OnAfterSaveChangesAsync(auditEntries).GetAwaiter().GetResult();
+
+            return result;
+        }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
